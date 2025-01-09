@@ -16,6 +16,14 @@ export function Movies(){
 
     return(
         <div className="grid grid-cols-4 gap-y-10 gap-x-10 items-center">
+            {movies? 
+             movies.map((movie,i)=>{
+                return(
+                    <span key={i}>{movie.title}</span>
+                )
+             }):
+             <p>non esisto</p>
+            }
         </div>
     )
 }
