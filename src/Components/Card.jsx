@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 export function Card({props}){
-    const {id, title , director, genre, release_year, abstract, image} = props
+    const {id, title, image} = props
     const img = 'http://localhost:3000/photo/'+image;
     
     return(
-        <div className="relative ">
+        <div className="relative">
             <img src={img ? img : ''}/>
             
             <div className="absolute bottom-0 text-white bg-cyan-300/80 flex flex-wrap justify-between w-full py-4 px-4">
