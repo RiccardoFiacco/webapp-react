@@ -10,9 +10,8 @@ function App() {
      <BrowserRouter>
       <Routes>
        <Route Component={DefaultLayout}>
-       <Route index Component={Home}/>
-       <Route/>
-       <Route/>
+        <Route index Component={Home}/>
+        <Route />
        </Route>
       </Routes>
      </BrowserRouter>
