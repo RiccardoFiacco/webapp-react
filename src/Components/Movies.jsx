@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
+import { Card } from './Card'
 export function Movies(){
     let baseUrl = 'http://localhost:3000/api/movies'
     const [movies, setMovies] = useState([])
@@ -19,7 +19,9 @@ export function Movies(){
             {movies? 
              movies.map((movie,i)=>{
                 return(
-                    <span key={i}>{movie.title}</span>
+                    <div key={i}>
+                        <Card props={movie}/>
+                    </div>
                 )
              }):
              <p>non esisto</p>
