@@ -8,7 +8,7 @@ export function Details(){
     let url = 'http://localhost:3000/api/movies/'+id
     const [movie, setMovie] = useState([])
     const {title, director, genre, release_year, abstract, image} = movie
-    
+    const img = 'http://localhost:3000/photo/'+image;
     useEffect(()=>{
         axios
         .get(url)
@@ -30,7 +30,11 @@ export function Details(){
                 <li>{genre}</li>
                 <li>{release_year}</li>
                 <li>{abstract}</li>
+                <li>
+                    <img className="h-80" src={image ? img : ''}/>
+                </li>
             </ul>
+            
             </>
             }
         </div>

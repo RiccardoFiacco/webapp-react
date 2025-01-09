@@ -8,6 +8,17 @@ export function Movies(){
     const [movies, setMovies] = useState([])
     
     useEffect(()=>{
+        axios
+        .get(baseUrl)
+        .then((res)=>{
+            setMovies(res.data)
+        })
+        .catch((err)=>{console.log(err)})
+
+    },[baseUrl])
+
+
+    useEffect(()=>{
         setTimeout(()=>{
             axios
             .get(baseUrl,{
@@ -21,7 +32,6 @@ export function Movies(){
             .catch((err)=>{console.log(err)})
         }, 1000)
     },[baseUrl, search])
-
     return(
         <div className="grid grid-cols-4 gap-y-10 gap-x-10 items-center">
             {movies? 

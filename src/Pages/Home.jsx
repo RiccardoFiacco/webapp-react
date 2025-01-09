@@ -1,5 +1,5 @@
 import { Movies } from '../Components/Movies'
-import { useEffect, useState} from 'react'
+import { useState} from 'react'
 import { GlobalContext } from '../GlobalContext.js';
 export function Home(){
     const [search, setSearch] = useState('')
@@ -7,10 +7,6 @@ export function Home(){
     function changeHandler(e){
         setSearch(e.target.value)
     }
-
-    useEffect(()=>{
-
-    },[search])
 
     return(
     <GlobalContext.Provider value={{search}}>
