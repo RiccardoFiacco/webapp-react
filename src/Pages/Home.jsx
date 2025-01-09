@@ -1,3 +1,5 @@
+import { Movies } from '../Components/Movies'
+
 export function Home(){
     return(
     <div className="grow flex flex-col items-center"> 
