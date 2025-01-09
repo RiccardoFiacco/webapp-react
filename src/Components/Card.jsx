@@ -16,23 +16,3 @@ export function Card({props}){
         </div>   
     )
 }
-
-{/* <div className="card relative">
-
-<img src={obj.poster_path ? finalImg : fotoPlace} className="myCard"/>
-
-<div className="hidden">
-  <h3>{title}</h3>
- 
-    <p>original name: {original_title}</p>
-    <p>
-      language: 
-       {language ?  <img src={language} className={style.h_flag}/> : original_language}
-    </p>
-    <p>avarage vote: {star}</p>
-    
-  <button className="btn btn-outline-primary" onClick={addInList}>add in your List</button>
-  <button><NavLink to={`/${objType}/${id}`} >Dettagli</NavLink></button>
-  
-</div>  
-</div> */}
