@@ -1,25 +1,21 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Form } from '../Components/Form' //PERCHE DA PROBLEMI ADDFORM?
-import axios from "axios"
-import { useState } from "react"
-import { getStar } from "../Utils/Utils"
+import { getStar, imgUrl, baseUrl, axiosCall} from "../Utils/Utils"
+import { GlobalContext } from "../Utils/GlobalContext"
 
 export function Details(){
-    const {id} =useParams()
-    let url = 'http://localhost:3000/api/movies/'+id
-    const [movie, setMovie] = useState([])
+    const {id} = useParams()
+    const {movie, setMovie} = useContext(GlobalContext)
     const {title, director, genre, release_year, abstract, image, reviews, avg_vote} = movie
-    const img = 'http://localhost:3000/photo/'+image;
     let star = getStar(avg_vote)
+    let url = baseUrl+'/'+id
+    const img = imgUrl+image;
+
+    
     useEffect(()=>{
-        axios
-        .get(url)
-        .then((res)=>{
-            setMovie(res.data)
-        })
-        .catch((err)=>{console.log(err)})
-    },[url])
+        axiosCall(url, setMovie)
+    },[url, setMovie])
 
     return(
         <div className="container grow grid flex-col py-7"> 

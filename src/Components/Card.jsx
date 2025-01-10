@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { getStar } from "../Utils/Utils";
-
+import { imgUrl } from "../Utils/Utils";
 export function Card({props}){
     const {id, title, image, avg_vote} = props
-    const img = 'http://localhost:3000/photo/'+image;
+    const img = imgUrl + image;
     let star = getStar(avg_vote)
     return(
         <div className="relative">

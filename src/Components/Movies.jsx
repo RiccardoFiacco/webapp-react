@@ -11,7 +11,7 @@ export function Movies(){
         setTimeout(()=>{
             axiosCall(baseUrl, setMovies, search)
         }, 1000)
-    },[baseUrl, search])
+    },[baseUrl, search]) 
 
     
     return(

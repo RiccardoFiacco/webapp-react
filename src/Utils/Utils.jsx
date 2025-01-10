@@ -10,7 +10,7 @@ export const imgUrl = 'http://localhost:3000/photo/';
 export function axiosCall(url, callback, param){
     
         axios
-        .get(baseUrl, param ? {
+        .get(url, param ? {
             params: {
                 title: param,
             }

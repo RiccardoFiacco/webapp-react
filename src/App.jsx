@@ -12,7 +12,8 @@ import { baseUrl } from './Utils/Utils.jsx'
 function App() {
  const [search, setSearch] = useState('')
  const [movies, setMovies] = useState([])
- 
+ const [movie, setMovie] = useState([])
+
   useEffect(()=>{
       axiosCall(baseUrl, setMovies)
   },[])
@@ -21,6 +22,7 @@ function App() {
     <GlobalContext.Provider value={{
       search, setSearch,
       movies, setMovies,
+      movie, setMovie,
     }}>
      <BrowserRouter>
       <Routes>
