@@ -1,15 +1,14 @@
 import { Movies } from '../Components/Movies'
-import { useState} from 'react'
-import { GlobalContext } from '../Utils/GlobalContext.js';
+import { GlobalContext } from '../Utils/GlobalContext'
+import { useContext } from "react"
 export function Home(){
-    const [search, setSearch] = useState('')
+    const { search, setSearch } = useContext(GlobalContext)
 
     function changeHandler(e){
         setSearch(e.target.value)
     }
 
     return(
-    <GlobalContext.Provider value={{search}}>
      <div className="container grow flex flex-col py-8"> 
       <div className="flex justify-between items-center py-3 ">
           <div>
@@ -28,6 +27,5 @@ export function Home(){
       </div>
      <Movies/> 
      </div>
-    </GlobalContext.Provider>
     )
 }
