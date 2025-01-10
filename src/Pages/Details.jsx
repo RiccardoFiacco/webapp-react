@@ -1,8 +1,10 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { Form } from '../Components/Form' //PERCHE DA PROBLEMI ADDFORM?
 import axios from "axios"
 import { useState } from "react"
 import { getStar } from "../Utils/Utils"
+
 export function Details(){
     const {id} =useParams()
     let url = 'http://localhost:3000/api/movies/'+id
@@ -21,13 +23,14 @@ export function Details(){
 
     return(
         <div className="container grow grid flex-col py-7"> 
-            <section className="flex py-4">
+            <section className="flex py-7">
+                
             {movie &&  
                 <>
-                 <div>
+                 <div className="w-1/2">
                   <img className="w-1/2 place-self-center" src={img} />
                  </div>
-                 <div>
+                 <div className="w-1/2">
                    <p className="text-6xl py-5">{title}</p> 
                    <p className="font-bold py-1">{director}</p> 
                    <p className="py-1">{genre}</p> 
@@ -37,7 +40,7 @@ export function Details(){
                 </>
                 }
             </section>
-            <section className="container flex justify-between items-center gap-4 mb-4">
+            <section className="container flex justify-between items-center mb-4">
                 <h2 className="font-bold text-xl">Tutte le recensioni</h2>
                 <div className="py-2 text-black">{star}</div>
             </section>
@@ -52,6 +55,7 @@ export function Details(){
                     )
                 })}
             </section>
+            <Form/>
         </div>
         
     )
