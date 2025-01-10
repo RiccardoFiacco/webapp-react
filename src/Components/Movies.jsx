@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { Card } from './Card'
-import { GlobalContext } from "../GlobalContext"
+import { GlobalContext } from "../Utils/GlobalContext"
 export function Movies(){
     const { search } = useContext(GlobalContext)
     let baseUrl = 'http://localhost:3000/api/movies'
@@ -32,6 +32,8 @@ export function Movies(){
             .catch((err)=>{console.log(err)})
         }, 1000)
     },[baseUrl, search])
+
+    
     return(
         <div className="grid grid-cols-4 gap-y-10 gap-x-10 items-center">
             {movies? 
