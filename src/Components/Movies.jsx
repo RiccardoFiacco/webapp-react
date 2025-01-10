@@ -1,35 +1,15 @@
-import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect} from "react"
 import { Card } from './Card'
 import { GlobalContext } from "../Utils/GlobalContext"
+import {  baseUrl, axiosCall  } from "../Utils/Utils"
+
+
 export function Movies(){
-    const { search } = useContext(GlobalContext)
-    let baseUrl = 'http://localhost:3000/api/movies'
-    const [movies, setMovies] = useState([])
+    const { search, movies, setMovies } = useContext(GlobalContext)
     
     useEffect(()=>{
-        axios
-        .get(baseUrl)
-        .then((res)=>{
-            setMovies(res.data)
-        })
-        .catch((err)=>{console.log(err)})
-
-    },[baseUrl])
-
-
-    useEffect(()=>{
         setTimeout(()=>{
-            axios
-            .get(baseUrl,{
-                params: {
-                    title: search,
-                }
-            })
-            .then((res)=>{
-                setMovies(res.data)
-            })
-            .catch((err)=>{console.log(err)})
+            axiosCall(baseUrl, setMovies, search)
         }, 1000)
     },[baseUrl, search])
 
