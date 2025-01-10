@@ -7,7 +7,7 @@ export function Details(){
     const {id} =useParams()
     let url = 'http://localhost:3000/api/movies/'+id
     const [movie, setMovie] = useState([])
-    const {title, director, genre, release_year, abstract, image} = movie
+    const {title, director, genre, release_year, abstract, image, reviews} = movie
     const img = 'http://localhost:3000/photo/'+image;
     useEffect(()=>{
         axios
@@ -19,24 +19,38 @@ export function Details(){
     },[url])
 
     return(
-        <div className="container grow flex flex-col py-7"> 
+        <div className="container grow grid flex-col py-7"> 
+            <section className="flex py-4">
             {movie &&  
-            <>
-            <h1 className="text-7xl">
-               {title}
-            </h1>
-            <ul className="text-3xl py-7">
-                <li>{director}</li>
-                <li>{genre}</li>
-                <li>{release_year}</li>
-                <li>{abstract}</li>
-                <li>
-                    <img className="h-80" src={image ? img : ''}/>
-                </li>
-            </ul>
-            
-            </>
-            }
+                <>
+                 <div>
+                  <img className="w-1/2 place-self-center" src={img} />
+                 </div>
+                 <div>
+                   <p className="text-6xl py-5">{title}</p> 
+                   <p className="font-bold py-1">{director}</p> 
+                   <p className="py-1">{genre}</p> 
+                   <p className="py-1">{release_year}</p> 
+                   <p className="py-1">{abstract}</p>
+                 </div>
+                </>
+                }
+            </section>
+            <section className="container flex justify-between items-center gap-4 mb-4">
+                <h2 className="font-bold text-xl">Tutte le recensioni</h2>
+                <div>stelline</div>
+            </section>
+            <section>
+                {reviews && reviews.map(({name, vote, text},i)=>{
+                    return(
+                        <div key={i} className="rounded-lg border-gray-600 border-2 py-3 my-4 px-3">
+                            <p>{text}</p>
+                            <p>voto: {vote}</p>
+                            <p className=" text-gray-500 text-lg font-bold italic ">by {name}</p>
+                       </div>
+                    )
+                })}
+            </section>
         </div>
         
     )
