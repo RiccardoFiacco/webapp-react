@@ -1,6 +1,6 @@
 import { Movies } from '../Components/Movies'
 import { useState} from 'react'
-import { GlobalContext } from '../GlobalContext.js';
+import { GlobalContext } from '../Utils/GlobalContext.js';
 export function Home(){
     const [search, setSearch] = useState('')
 
