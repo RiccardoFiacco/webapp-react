@@ -2,13 +2,14 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import { useState } from "react"
-
+import { getStar } from "../Utils/Utils"
 export function Details(){
     const {id} =useParams()
     let url = 'http://localhost:3000/api/movies/'+id
     const [movie, setMovie] = useState([])
-    const {title, director, genre, release_year, abstract, image, reviews} = movie
+    const {title, director, genre, release_year, abstract, image, reviews, avg_vote} = movie
     const img = 'http://localhost:3000/photo/'+image;
+    let star = getStar(avg_vote)
     useEffect(()=>{
         axios
         .get(url)
@@ -38,7 +39,7 @@ export function Details(){
             </section>
             <section className="container flex justify-between items-center gap-4 mb-4">
                 <h2 className="font-bold text-xl">Tutte le recensioni</h2>
-                <div>stelline</div>
+                <div className="py-2 text-black">{star}</div>
             </section>
             <section>
                 {reviews && reviews.map(({name, vote, text},i)=>{

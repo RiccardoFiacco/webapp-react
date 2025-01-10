@@ -11,7 +11,7 @@ export function Card({props}){
             
             <div className="absolute bottom-0 text-white bg-cyan-300/80  w-full py-4 px-4">
              <div className=" text-neutral-950 text-3xl sm:text-md">{title}</div>
-             <div className="py-2">{star}</div>
+             <div className="py-2 text-black">{star}</div>
              <Link to={`/${id}`} className=" bg-slate-600 text-white rounded-md py-1 px-2 hover:bg-slate-800 h-7">dettagli</Link>
             </div>
             
