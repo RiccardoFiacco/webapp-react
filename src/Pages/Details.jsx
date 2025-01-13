@@ -30,7 +30,7 @@ export function Details(){
             <section>
              {reviews && <Reviews reviews={reviews} />}
             </section>
-            <Form/>
+            <Form filmUrl={url}/>
         </div>
         
     )

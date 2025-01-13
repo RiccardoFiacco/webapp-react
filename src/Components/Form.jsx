@@ -1,8 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { axiosCall } from "../Utils/Utils";
+import { GlobalContext } from "../Utils/GlobalContext";
 
-export function Form() {
+export function Form({filmUrl}) {
+
+  const {setMovie} =useContext(GlobalContext)
+
   const { id } = useParams();
   const baseForm = {
     movie_id: id,
@@ -37,12 +42,12 @@ export function Form() {
   }
 
   function add(event){
-    event.preventDefault();
-    console.log(review)
+    event.preventDefault()
       axios
       .post('http://localhost:3000/api/reviews', review)
       .then((res)=>{
-          alert(res)
+          alert(res.data)
+          axiosCall(filmUrl, setMovie)
       })
       .catch((err)=>{alert(err)})
       setReview(baseForm)
