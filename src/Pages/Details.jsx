@@ -28,7 +28,7 @@ export function Details(){
              <div className="py-2 text-black">{star}</div>
             </section>
             <section>
-             {reviews && <Reviews reviews={reviews} />}
+             {reviews && <Reviews reviews={reviews} filmUrl={url}/>}
             </section>
             <Form filmUrl={url}/>
         </div>

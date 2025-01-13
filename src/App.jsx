@@ -29,6 +29,7 @@ function App() {
        <Route Component={DefaultLayout}>
         <Route index Component={Home}/>
         <Route path='/:id' Component={Details}/>
+        {/* <Route path='/user' Component={Login}/> */}
        </Route>
       </Routes>
      </BrowserRouter>
