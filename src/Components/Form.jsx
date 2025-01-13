@@ -43,6 +43,9 @@ export function Form({filmUrl}) {
 
   function add(event){
     event.preventDefault()
+    review.name = review.name.trim()
+    review.text = review.text.trim()
+    
       axios
       .post('http://localhost:3000/api/reviews', review)
       .then((res)=>{
