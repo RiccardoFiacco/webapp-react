@@ -2,8 +2,6 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { faStar as starRegular } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios";
-import { useContext } from "react";
-import { GlobalContext } from "./GlobalContext";
 
 export const baseUrl = 'http://localhost:3000/api/movies';
 export const sendUrl = 'http://localhost:3000/api/reviews';

@@ -14,7 +14,7 @@ function App() {
  const [search, setSearch] = useState('')
  const [movies, setMovies] = useState([])
  const [movie, setMovie] = useState([])
- const [loading, setLoading] = useState(false)
+ const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
       axiosCall(baseUrl, setMovies)
