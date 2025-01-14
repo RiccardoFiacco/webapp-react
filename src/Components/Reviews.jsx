@@ -1,22 +1,40 @@
 import axios from "axios"
-import { sendUrl, axiosCall} from "../Utils/Utils"
+import { sendUrl} from "../Utils/Utils"
 import { useContext } from "react"
 import { GlobalContext } from "../Utils/GlobalContext"
 import { ToastContainer, toast } from "react-toastify"
 
 export function Reviews({reviews, filmUrl}){
-    const {setMovie} = useContext(GlobalContext)
+    const {setMovie, setLoading, search} = useContext(GlobalContext)
 
-    function deleteReview(id){
-        axios
-        .delete(sendUrl+'/'+id)
-        .then((res)=>{
-            toast(id)
-            axiosCall(filmUrl, setMovie)
+    function fetch(){
+      setLoading(true)
+      axios.get(filmUrl,search ?? {
+        params: {
+          search: search
+        }
+      })
+        .then(response => {
+            setMovie(response.data)
         })
-        .catch((err)=>toast(err))
-        
+        .catch(err => {
+          console.error(err)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
     }
+
+    async function deleteReview(id){
+        try{
+         const result = await axios.delete(sendUrl+'/'+id);
+         toast(result.data)
+         fetch()
+        }catch(err){
+            alert(err)
+        }
+    }
+
     // async function deleteReview(id){   
     //     try{
     //      const result = await axios.delete(sendUrl+'/'+id);

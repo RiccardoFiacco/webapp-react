@@ -1,12 +1,30 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import { axiosCall} from "../Utils/Utils";
 import { GlobalContext } from "../Utils/GlobalContext";
+import { baseUrl } from "../Utils/Utils";
 
 export function Form({filmUrl}) {
 
-  const {setMovie} =useContext(GlobalContext)
+  const {setLoading, setMovies, search} = useContext(GlobalContext)
+
+  function fetch(){
+    setLoading(true)
+    axios.get(filmUrl,search ?? {
+      params: {
+        search: search
+      }
+    })
+      .then(response => {
+        setMovies(response.data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
 
   const { id } = useParams();
   const baseForm = {
@@ -41,19 +59,19 @@ export function Form({filmUrl}) {
     }
   }
 
-  function add(event){
+  async function add(event){
     event.preventDefault()
     review.name = review.name.trim()
     review.text = review.text.trim()
     
-      axios
-      .post('http://localhost:3000/api/reviews', review)
-      .then((res)=>{
-          alert(res.data)
-          axiosCall(filmUrl, setMovie)
-      })
-      .catch((err)=>{alert(err)})
-      setReview(baseForm)
+    try{
+    const result = await axios.post('http://localhost:3000/api/reviews', review)
+    alert(result.data)
+    fetch()
+    setReview(baseForm)
+    }catch(err){
+      alert(err)
+    }
   }
 
   return (
