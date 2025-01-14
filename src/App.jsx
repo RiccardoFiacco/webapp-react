@@ -8,11 +8,13 @@ import { GlobalContext } from './Utils/GlobalContext.js'
 import { useState, useEffect } from 'react'
 import { axiosCall } from './Utils/Utils.jsx'
 import { baseUrl } from './Utils/Utils.jsx'
+import HocForm from './Components/Login.jsx'
 
 function App() {
  const [search, setSearch] = useState('')
  const [movies, setMovies] = useState([])
  const [movie, setMovie] = useState([])
+ const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
       axiosCall(baseUrl, setMovies)
@@ -23,13 +25,14 @@ function App() {
       search, setSearch,
       movies, setMovies,
       movie, setMovie,
+      loading, setLoading
     }}>
      <BrowserRouter>
       <Routes>
        <Route Component={DefaultLayout}>
         <Route index Component={Home}/>
         <Route path='/:id' Component={Details}/>
-        {/* <Route path='/user' Component={Login}/> */}
+         {/* <Route path='/user' Component={HocForm}/>  */}
        </Route>
       </Routes>
      </BrowserRouter>

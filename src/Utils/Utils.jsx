@@ -2,24 +2,25 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { faStar as starRegular } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios";
+import { useContext } from "react";
+import { GlobalContext } from "./GlobalContext";
 
 export const baseUrl = 'http://localhost:3000/api/movies';
 export const sendUrl = 'http://localhost:3000/api/reviews';
 export const imgUrl = 'http://localhost:3000/photo/';
 
+
 export function axiosCall(url, callback, param){
-    
-        axios
-        .get(url, param ? {
-            params: {
-                title: param,
-            }
-        }:'')
-        .then((res)=>{
-            callback(res.data)
-        })
-        .catch((err)=>{console.log(err)})
-    
+    axios
+    .get(url, param ? {
+        params: {
+            title: param,
+        }
+    }:'')
+    .then((res)=>{
+        callback(res.data)
+    })
+    .catch((err)=>{console.log(err)})  
 }
 
 export function getStar(vote){

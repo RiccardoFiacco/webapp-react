@@ -12,6 +12,7 @@ export function Home(){
      <div className="container grow flex flex-col py-8"> 
       <div className="flex justify-between items-center py-3 ">
           <div>
+          <h1 className="animate__animated animate__bounce">An animated element</h1>
            <h1 className="text-3xl font-bold">Benvenuti su movies review </h1>
            <p>Uno spazio dove poter recensire vari film in totale liberta</p>
           </div>

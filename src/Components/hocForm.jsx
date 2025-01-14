@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export function withForm (WrappedComponent, initialValue) {
-     (props) => {
+export function HocForm (WrappedComponent, initialValue) {
+    return props => {
         const [formData, setFormData] = useState(initialValue);
 
         const handleInputChange = (event) => {
