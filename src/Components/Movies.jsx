@@ -2,6 +2,7 @@ import { useContext, useEffect} from "react"
 import { Card } from './Card'
 import { GlobalContext } from "../Utils/GlobalContext"
 import {  baseUrl, axiosCall  } from "../Utils/Utils"
+import axios from "axios"
 
 
 export function Movies(){
@@ -9,7 +10,12 @@ export function Movies(){
     
     useEffect(()=>{
         setTimeout(()=>{
-            axiosCall(baseUrl, setMovies, search, setLoading)
+            //axiosCall(baseUrl, setMovies, search, setLoading)
+            axios
+            .get(baseUrl)
+            .then(()=>{})
+            .catch(()=>{})
+            .finally(()=>{})
         }, 1000)
     },[baseUrl, search]) 
 
