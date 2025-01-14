@@ -1,15 +1,7 @@
-import { HocForm } from "./hocForm";
-
-const baseForm = {
-    email: '',
-    password:''
-};
-
-const Form = ()=>{
-  return(
-    <div className="flex grow justify-center items-center">
+function LoginForm(){
+    return(
+        <div className="flex grow justify-center items-center">
         <form className="rounded-lg border-2 border-gray-950" >
-          {/* { JSON.stringify(review) } */}
           <div className="px-3 text-lg font-medium border-b-2 border-b-gray-950 bg-slate-300 ">
             login
           </div>
@@ -38,19 +30,9 @@ const Form = ()=>{
           </div>
         </form>
         </div>
-      );  
+    )
 }
 
 
-// const SimpleForm = ({formData, handleInputChange, handleSubmit}) => {
-//     return <form onSubmit={handleSubmit}>
-//         <input type="text" name="search" value={formData.search} onChange={handleInputChange}/>
-//         <input type="submit" value="Cerca"/>
-//         {JSON.stringify(formData)}
-//     </form>
-// }
 
-// export default withForm(SimpleForm, SimpleFormDataInitial);  // onSubmit={(e)=>add(e)}
-
-
-export default HocForm(Form, baseForm);  // onSubmit={(e)=>add(e)}
+export { LoginForm }

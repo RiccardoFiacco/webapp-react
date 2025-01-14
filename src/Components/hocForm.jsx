@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 export function HocForm (WrappedComponent, initialValue) {
-    return props => {
+    const Form = (props) => {
         const [formData, setFormData] = useState(initialValue);
-
         const handleInputChange = (event) => {
             const { name, value } = event.target;
             setFormData((oldFormData) => ({
@@ -16,6 +15,8 @@ export function HocForm (WrappedComponent, initialValue) {
             event.preventDefault();
         }
 
-        return <WrappedComponent handleSubmit={handleSubmit} handleInputChange={handleInputChange} formData={formData} {...props}/>
+        return <WrappedComponent test={'ciao'} handleSubmit={handleSubmit} handleInputChange={handleInputChange} formData={formData} {...props}/>
     }
+
+    return Form;
 }

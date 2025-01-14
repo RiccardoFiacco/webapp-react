@@ -45,9 +45,7 @@ export function Reviews({reviews, filmUrl}){
     //     }
     // }
 
-    return(
-        <>
-    {reviews && reviews.map(({id, name, vote, text},i)=>{
+    return reviews && reviews.map(({id, name, vote, text},i)=>{
         return(
             <div key={i} className="rounded-lg border-gray-600 border-2 py-3 my-4 px-3">
                 <p>{text}</p>
@@ -59,6 +57,5 @@ export function Reviews({reviews, filmUrl}){
                 <ToastContainer />
            </div>
         )
-    })}</>
-    )
+    })
 }

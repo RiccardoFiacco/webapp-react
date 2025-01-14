@@ -7,7 +7,7 @@ import { Routes } from 'react-router-dom'
 import { GlobalContext } from './Utils/GlobalContext.js'
 import { useState, useEffect } from 'react'
 import { baseUrl } from './Utils/Utils.jsx'
-import HocForm from './Components/Login.jsx'
+import { Login } from './Pages/Login.jsx'
 import axios from 'axios'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     setLoading(true)
     axios.get(baseUrl,search ?? {
       params: {
-        search: search
+        title: search
       }
     })
       .then(response => {
@@ -33,7 +33,7 @@ function App() {
         setLoading(false)
       })
     
-  },[])
+  },[baseUrl, search])
 
   return (
     <GlobalContext.Provider value={{
@@ -47,7 +47,7 @@ function App() {
        <Route Component={DefaultLayout}>
         <Route index Component={Home}/>
         <Route path='/:id' Component={Details}/>
-         {/* <Route path='/user' Component={HocForm}/>  */}
+        <Route path='/user' Component={Login}/>
        </Route>
       </Routes>
      </BrowserRouter>
