@@ -8,17 +8,41 @@ export const sendUrl = 'http://localhost:3000/api/reviews';
 export const imgUrl = 'http://localhost:3000/photo/';
 
 
-export function axiosCall(url, callback, param){
-    axios
-    .get(url, param ? {
-        params: {
-            title: param,
-        }
-    }:'')
-    .then((res)=>{
-        callback(res.data)
-    })
-    .catch((err)=>{console.log(err)})  
+export function axiosCall(url, params ){
+    // console.log(url) 
+    // console.log(callback) 
+    // console.log(param) 
+    // console.log(load)
+    return axios
+    .get(url, {params})
+    
+    // load && load(true)
+    //  axios
+    //  .get(url, param ? {
+    //      params: {
+    //          title: param,
+    //      }
+    //  }:'')
+    //  .then((res)=>{
+    //      callback(res.data)
+    //  })
+    //  .catch((err)=>{console.log(err)})  
+    //  .finally(()=>{load && load(false)})
+
+    // }else{
+    //     axios
+    //     .get(url, param ? {
+    //         params: {
+    //             title: param,
+    //         }
+    //     }:'')
+    //     .then((res)=>{
+    //         callback(res.data)
+    //     })
+    //     .catch((err)=>{console.log(err)})    
+    // }
+
+
 }
 
 export function getStar(vote){

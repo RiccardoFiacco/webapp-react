@@ -6,9 +6,9 @@ import { Details } from './Pages/Details.jsx'
 import { Routes } from 'react-router-dom'
 import { GlobalContext } from './Utils/GlobalContext.js'
 import { useState, useEffect } from 'react'
-import { axiosCall } from './Utils/Utils.jsx'
 import { baseUrl } from './Utils/Utils.jsx'
 import HocForm from './Components/Login.jsx'
+import axios from 'axios'
 
 function App() {
  const [search, setSearch] = useState('')
@@ -16,8 +16,23 @@ function App() {
  const [movie, setMovie] = useState([])
  const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-      axiosCall(baseUrl, setMovies)
+  useEffect(()=>{ 
+    setLoading(true)
+    axios.get(baseUrl,search ?? {
+      params: {
+        search: search
+      }
+    })
+      .then(response => {
+        setMovies(response.data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+    
   },[])
 
   return (

@@ -5,7 +5,7 @@ import { GlobalContext } from "../Utils/GlobalContext"
 import { ToastContainer, toast } from "react-toastify"
 
 export function Reviews({reviews, filmUrl}){
-    const {setMovie, setLoading} = useContext(GlobalContext)
+    const {setMovie} = useContext(GlobalContext)
 
     function deleteReview(id){
         axios

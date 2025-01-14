@@ -5,11 +5,11 @@ import {  baseUrl, axiosCall  } from "../Utils/Utils"
 
 
 export function Movies(){
-    const { search, movies, setMovies } = useContext(GlobalContext)
+    const { search, movies, setMovies, setLoading} = useContext(GlobalContext)
     
     useEffect(()=>{
         setTimeout(()=>{
-            axiosCall(baseUrl, setMovies, search)
+            axiosCall(baseUrl, setMovies, search, setLoading)
         }, 1000)
     },[baseUrl, search]) 
 
