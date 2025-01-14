@@ -1,4 +1,10 @@
-function LoginForm(){
+import { WithForm } from "./WithForm"
+const baseForm={
+  email:'',
+  password:''
+}
+function LoginForm({setter, data, handlerInput}){
+  const{email, password} = data
     return(
         <div className="flex grow justify-center items-center">
         <form className="rounded-lg border-2 border-gray-950" >
@@ -11,18 +17,18 @@ function LoginForm(){
                 <input
                   placeholder="email"
                   name="email"
-                //   onChange={changeHandler2}
+                  onChange={(e) => handlerInput(e)}
                   type="text"
                   className="border-2 my-5"
-                //   value={review.vote}
+                  value={email}
                 />
                 <input
                   placeholder="password"
                   name="password"
-                //   onChange={(e) => changeHandler(e)}
+                  onChange={(e) => handlerInput(e)}
                   type="text"
                   className="border-2 mx-5"
-                //   value={} 
+                  value={password} 
                 />
               </div>
               <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600">invia</button>
@@ -34,5 +40,5 @@ function LoginForm(){
 }
 
 
-
-export { LoginForm }
+const HocedForm = WithForm(LoginForm, baseForm); //creo il wrapper da esportare 
+export { HocedForm }
