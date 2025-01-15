@@ -3,11 +3,11 @@ const baseForm={
   email:'',
   password:''
 }
-function LoginForm({setter, data, handlerInput}){
+function LoginForm({ data, handlerInput, sender}){
   const{email, password} = data
     return(
         <div className="flex grow justify-center items-center">
-        <form className="rounded-lg border-2 border-gray-950" >
+        <form className="rounded-lg border-2 border-gray-950" onSubmit={(e)=>sender(e)}>
           <div className="px-3 text-lg font-medium border-b-2 border-b-gray-950 bg-slate-300 ">
             login
           </div>

@@ -4,8 +4,11 @@ import { useState } from "react"
 import { useNavigate } from "react-router";
 import { loginUrl } from '../Utils/Utils'
 export function WithForm(Component, baseForm){
-    let navigate = useNavigate();
+    
     return (props)=>{
+        
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        let navigate = useNavigate();
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const [data, setData] = useState(baseForm)
 
@@ -32,8 +35,7 @@ export function WithForm(Component, baseForm){
             }
         }
         
-        return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import 
-                setter={setData} //passo il metodo per aggiornare il valore 
+        return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import  
                 data={data} //passo i valori che dovranno essere mostrati come value
                 handlerInput={changeHandler} //passo il gestore per aggiornare gli input
                 sender = {sendData}
