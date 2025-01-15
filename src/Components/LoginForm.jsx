@@ -7,10 +7,10 @@ const baseForm={
   email:'',
   password:''
 }
-function Form({ data, handlerInput, sender}){
-  const{email, password} = data
+function Form({data, handlerInput, sender}){
+  const {email, password} = data
   const location = useLocation()
-  console.log(location)
+  console.log(data, handlerInput, sender)
     return(
         <div className="flex grow justify-center items-center">
         <form className="rounded-lg border-2 border-gray-950" onSubmit={(e)=>sender(e)}>
@@ -47,6 +47,6 @@ function Form({ data, handlerInput, sender}){
     )
 }
 
-const HocedRegistrationForm = WithFormRegistration(WithForm(Form, baseForm));
-const HocedForm = WithFormLogin(WithForm(Form, baseForm)); //creo il wrapper da esportare 
+const HocedRegistrationForm = WithForm(WithFormRegistration(Form, baseForm));
+const HocedForm = WithForm(WithFormLogin(Form, baseForm)); //creo il wrapper da esportare 
 export { HocedForm, HocedRegistrationForm}

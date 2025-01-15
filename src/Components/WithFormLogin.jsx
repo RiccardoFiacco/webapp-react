@@ -12,6 +12,7 @@ export function WithFormLogin(Component, baseForm){
         
         async function sendData(event){
             event.preventDefault();
+            console.log(data)
             data.email = data.email.trim()
             data.password = data.password.trim()
             try{

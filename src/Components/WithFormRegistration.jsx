@@ -6,13 +6,15 @@ import { loginUrl } from '../Utils/Utils'
 export function WithFormRegistration (Component, baseForm){
     
     return (props)=>{
-        
+        console.log(props)
         // eslint-disable-next-line react-hooks/rules-of-hooks
         let navigate = useNavigate();
         const {data, setData} = props 
 
         async function sendData(event){
             event.preventDefault();
+            console.log(props)
+            console.log(data)
             data.email = data.email.trim()
             data.password = data.password.trim()
             try{
