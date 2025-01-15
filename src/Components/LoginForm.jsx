@@ -26,7 +26,8 @@ function LoginForm({ data, handlerInput, sender}){
                   placeholder="password"
                   name="password"
                   onChange={(e) => handlerInput(e)}
-                  type="text"
+                  type="password"
+                  minLength="8"
                   className="border-2 mx-5"
                   value={password} 
                 />

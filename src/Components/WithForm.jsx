@@ -27,7 +27,7 @@ export function WithForm(Component, baseForm){
             data.password = data.password.trim()
             try{
                 const result = await axios.post(loginUrl, data)
-                console.log(result)
+                console.log(result.data)
                 setData(baseForm)
                 navigate("/")
             }catch(err){
