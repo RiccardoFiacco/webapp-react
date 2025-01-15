@@ -18,13 +18,14 @@ function App() {
  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{ 
-    setLoading(true)
-    axios.get(baseUrl,search ?? {
+    setLoading(true) //imposto la variabile di caricamento a true
+    axios.get(baseUrl,search?{
       params: {
         title: search
       }
-    })
+    }:'')
       .then(response => {
+        console.log(response.data)
         setMovies(response.data)
       })
       .catch(err => {
@@ -33,7 +34,7 @@ function App() {
       .finally(() => {
         setLoading(false)
       })
-    
+    console.log(search)
   },[baseUrl, search])
 
   return (

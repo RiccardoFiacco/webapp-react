@@ -8,7 +8,7 @@ import { Reviews } from "../Components/Reviews";
 import axios from "axios";
 export function Details() {
   const { id } = useParams();
-  const { movie, setMovie, search, setLoading} = useContext(GlobalContext);
+  const { movie, setMovie, setLoading} = useContext(GlobalContext);
   const { reviews, avg_vote } = movie;
 
   let star = getStar(avg_vote);
@@ -17,14 +17,7 @@ export function Details() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(
-        url,
-        search ?? {
-          params: {
-            search: search,
-          },
-        }
-      )
+      .get(url)
       .then((response) => {
         setMovie(response.data);
       })
@@ -34,7 +27,7 @@ export function Details() {
       .finally(() => {
         setLoading(false);
       });
-  }, [url, setMovie]);
+  }, [url]);
 
   return (
     <div className="container grow grid flex-col py-7">
