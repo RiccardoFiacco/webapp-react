@@ -16,7 +16,7 @@ export function WithFormRegistration (Component, baseForm){
             data.email = data.email.trim()
             data.password = data.password.trim()
             try{
-                const result = await axios.post(loginUrl, data)
+                const result = await axios.post(loginUrl+'/registration', data)
                 console.log(result.data)
                 setData(baseForm)
                 navigate("/")
