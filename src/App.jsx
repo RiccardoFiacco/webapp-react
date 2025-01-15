@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import { baseUrl } from './Utils/Utils.jsx'
 import { Login } from './Pages/Login.jsx'
 import axios from 'axios'
+import { Registration } from './Pages/Registration.jsx'
 
 function App() {
  const [search, setSearch] = useState('')
@@ -48,6 +49,7 @@ function App() {
         <Route index Component={Home}/>
         <Route path='/:id' Component={Details}/>
         <Route path='/user' Component={Login}/>
+        <Route path='/registration' Component={Registration}/>
        </Route>
       </Routes>
      </BrowserRouter>
