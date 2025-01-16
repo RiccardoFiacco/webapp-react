@@ -3,9 +3,9 @@
 /* eslint-disable react/display-name */
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { loginUrl } from '../Utils/Utils'
+import { loginUrl } from '../../Utils/Utils'
 import { useContext } from "react";
-import { GlobalContext } from "../Utils/GlobalContext";
+import { GlobalContext } from "../../Utils/GlobalContext";
 export function WithFormLogin(Component){
     return ({data, resetForm,  ...other}) => { //destructuring delle props che mi servono, con other prendo le altre e le metto in quella prop
 

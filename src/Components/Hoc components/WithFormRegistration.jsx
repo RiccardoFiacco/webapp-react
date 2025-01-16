@@ -2,7 +2,7 @@
 /* eslint-disable react/display-name */
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { loginUrl } from '../Utils/Utils'
+import { loginUrl } from '../../Utils/Utils'
 export function WithFormRegistration (Component, baseForm){
     
     return (props)=>{

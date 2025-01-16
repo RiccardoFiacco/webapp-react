@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link, useLocation } from "react-router-dom"
-import { WithFormRegistration } from "./WithFormRegistration"
-import { WithFormLogin } from "./WithFormLogin"
-import { WithForm } from "./WithForm"
+import { WithFormRegistration } from "./Hoc components/WithFormRegistration"
+import { WithFormLogin } from "./Hoc components/WithFormLogin"
+import { WithForm } from "./Hoc components/WithForm"
 
 const baseForm={
   email:'',

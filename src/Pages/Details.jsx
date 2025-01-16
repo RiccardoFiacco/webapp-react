@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Form } from "../Components/Form"; //PERCHE DA PROBLEMI ADDFORM?
+import { Form } from "../Components/ReviewsForm"; //PERCHE DA PROBLEMI ADDFORM?
 import { getStar, baseUrl } from "../Utils/Utils";
 import { GlobalContext } from "../Utils/GlobalContext";
 import { FilmInfo } from "../Components/FilmInfo";

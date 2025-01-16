@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext } from "react"
-import { GlobalContext } from "../Utils/GlobalContext"
+import { GlobalContext } from "../../Utils/GlobalContext"
 
 /* eslint-disable react/display-name */
 export function WithButton(Component){

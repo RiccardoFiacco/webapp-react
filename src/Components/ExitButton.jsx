@@ -1,4 +1,4 @@
-import { WithButton } from "./WithButton"
+import { WithButton } from "./Hoc components/WithButton"
 
 export function Button({setter}){
     return(
