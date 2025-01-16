@@ -5,15 +5,11 @@ import { useNavigate } from "react-router";
 import { loginUrl } from '../Utils/Utils'
 import { useContext } from "react";
 import { GlobalContext } from "../Utils/GlobalContext";
-export function WithFormLogin(Component, baseForm){
-
-    const {setLogged} =useContext(GlobalContext)
-
-    return (props)=>{
-
+export function WithFormLogin(Component){
+    return ({data, resetForm,  ...other}) => {
+        const {setLogged} = useContext(GlobalContext)
         // eslint-disable-next-line react-hooks/rules-of-hooks
         let navigate = useNavigate();
-        const {data, setter} = props 
         
         async function sendData(event){
             event.preventDefault();
@@ -25,7 +21,7 @@ export function WithFormLogin(Component, baseForm){
                 if(loggato){
                  console.log('utente trovato')
                  setLogged(code)
-                 setter(baseForm)
+                 resetForm();
                  navigate("/") 
                 }else{
                     console.log('utente non trovato')
@@ -38,6 +34,7 @@ export function WithFormLogin(Component, baseForm){
         
         return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import  
                 sender = {sendData}
-                {...props}/> //queste sono le props che aveva gia il componente 
+                data={data}
+                {...other}/> //queste sono le props che aveva gia il componente 
     }
 }
