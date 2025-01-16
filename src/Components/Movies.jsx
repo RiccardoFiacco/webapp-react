@@ -6,13 +6,11 @@ export function Movies() {
   const { movies } = useContext(GlobalContext);
 
   return (
-    <div className="grid grid-cols-4 gap-y-10 gap-x-10 items-center">
+    <div className="flex flex-wrap justify-center gap-y-4 gap-x-4">
       {movies ? (
         movies.map((movie, i) => {
-          return (
-            <div key={i}>
-              <Card props={movie} />
-            </div>
+          return (          
+              <Card key={i} props={movie} />
           );
         })
       ) : (
