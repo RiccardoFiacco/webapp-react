@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link, useLocation } from "react-router-dom"
 import { WithFormRegistration } from "./WithFormRegistration"
 import { WithFormLogin } from "./WithFormLogin"
