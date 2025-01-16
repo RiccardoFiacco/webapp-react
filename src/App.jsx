@@ -12,10 +12,11 @@ import axios from 'axios'
 import { Registration } from './Pages/Registration.jsx'
 
 function App() {
- const [search, setSearch] = useState('')
- const [movies, setMovies] = useState([])
- const [movie, setMovie] = useState([])
- const [loading, setLoading] = useState(true)
+ const [search, setSearch] = useState('')// variabile reattiva per gestire il filtro di ricerca
+ const [movies, setMovies] = useState([]) // variabile reattiva per gestire i film nella pagina principale
+ const [movie, setMovie] = useState([]) //variabile reattiva per gestire il film nella pagina di dettaglio
+ const [loading, setLoading] = useState(true)//variabile reattiva per gestire la schermata di caricamento
+ const [logged, setLogged] = useState('') //variabile reattiva per gestire l'accesso o meno dell'utente
 
   useEffect(()=>{ 
     setLoading(true) //imposto la variabile di caricamento a true
@@ -25,7 +26,6 @@ function App() {
       }
     }:'')
       .then(response => {
-        console.log(response.data)
         setMovies(response.data)
       })
       .catch(err => {
@@ -42,7 +42,8 @@ function App() {
       search, setSearch,
       movies, setMovies,
       movie, setMovie,
-      loading, setLoading
+      loading, setLoading,
+      logged, setLogged
     }}>
      <BrowserRouter>
       <Routes>
