@@ -5,7 +5,7 @@ import { GlobalContext } from "../Utils/GlobalContext"
 import { toast } from "react-toastify"
 
 export function Reviews({reviews, filmUrl}){
-    const {setMovie, setLoading} = useContext(GlobalContext)
+    const {setMovie, setLoading, logged} = useContext(GlobalContext)
 
     function fetch(){
       setLoading(true)
@@ -38,7 +38,7 @@ export function Reviews({reviews, filmUrl}){
                 <p>voto: {vote}</p>
                 <div className="flex justify-between items-center">
                     <span className=" text-gray-500 text-lg font-bold italic ">by {name}</span>
-                    <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600" onClick={()=>deleteReview(id)}>elimina</button>   
+                    {logged !== '' ? <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600" onClick={()=>deleteReview(id)}>elimina</button>: null} 
                 </div>
            </div>
         )
