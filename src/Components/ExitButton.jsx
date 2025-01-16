@@ -2,7 +2,7 @@ import { WithButton } from "./WithButton"
 
 export function Button({setter}){
     return(
-     <a onClick={setter}>esci</a>
+     <button className="bg-red-500 py-1 px-3 rounded-xl hover:bg-red-700" onClick={setter}>esci</button>
     )
 }
 
