@@ -1,8 +1,8 @@
-import { HocedForm } from '../Components/LoginForm.jsx'
+import { HocedLoginForm } from '../Components/LoginForm.jsx'
 
 const Login = ()=>{
     return(
-      <HocedForm/>
+      <HocedLoginForm/>
     );  
 }
 
