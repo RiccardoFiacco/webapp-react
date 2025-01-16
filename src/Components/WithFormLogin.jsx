@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import axios from "axios";
 import { useNavigate } from "react-router";
