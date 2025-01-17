@@ -9,10 +9,8 @@ import { GlobalContext } from "../../Utils/GlobalContext";
 export function WithFormLogin(Component){
     return (props) => { //destructuring delle props che mi servono, con other prendo le altre e le metto in quella prop
         
-        const {data, resetForm,  ...other} = props
-        console.log(data)
-        console.log(resetForm)
-        console.log(other)
+        const {data, resetForm, validation, ...other} = props
+        
         const {setLogged} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
         let navigate = useNavigate(); //uso l'hook per creare la variabile per far tornare alla home 
         
@@ -21,6 +19,12 @@ export function WithFormLogin(Component){
             //trim degli input
             data.email = data.email.trim()
             data.password = data.password.trim()
+            const result = validation()
+            if(result.valid){
+                console.log(result.msg)
+            }else{
+                console.log(result.msg)
+            }
             try{
                 const result = await axios.post(loginUrl+'/login', data) //chiamata alla rotta a cui passo i dati
                 const {loggato, code} = result.data //destructuring della risposta
@@ -41,6 +45,6 @@ export function WithFormLogin(Component){
         return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import  
                 sender = {sendData}
                 data={data}
-                {...props}/> //queste sono le props che aveva gia il componente 
+                {...other}/> //queste sono le props che aveva gia il componente 
     }
 }

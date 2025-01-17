@@ -51,5 +51,5 @@ function Form({data, handlerInput, sender}){
 }
 
 const HocedLoginForm = WithForm(WithValidation(WithFormLogin(Form)),baseForm)
-const HocedRegistrationForm = WithForm(WithFormRegistration(Form),baseForm)
+const HocedRegistrationForm = WithForm(WithValidation(WithFormRegistration(Form)),baseForm)
 export { HocedLoginForm, HocedRegistrationForm}
