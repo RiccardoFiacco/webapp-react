@@ -21,8 +21,7 @@ export function WithForm(Component, baseForm){
         return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import  
                 data={data} //passo i valori che dovranno essere mostrati come value
                 handlerInput={changeHandler} //passo il gestore per aggiornare gli input
-                resetForm={resetForm}
-                setter={setData}
+                resetForm={resetForm}  
                 {...props}/> //queste sono le props che aveva gia il componente  
     }
 }

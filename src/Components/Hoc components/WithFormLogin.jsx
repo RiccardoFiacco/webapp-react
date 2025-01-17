@@ -7,8 +7,12 @@ import { loginUrl } from '../../Utils/Utils'
 import { useContext } from "react";
 import { GlobalContext } from "../../Utils/GlobalContext";
 export function WithFormLogin(Component){
-    return ({data, resetForm,  ...other}) => { //destructuring delle props che mi servono, con other prendo le altre e le metto in quella prop
-
+    return (props) => { //destructuring delle props che mi servono, con other prendo le altre e le metto in quella prop
+        
+        const {data, resetForm,  ...other} = props
+        console.log(data)
+        console.log(resetForm)
+        console.log(other)
         const {setLogged} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
         let navigate = useNavigate(); //uso l'hook per creare la variabile per far tornare alla home 
         
@@ -37,6 +41,6 @@ export function WithFormLogin(Component){
         return <Component //con questo io ritorno il componente arricchito di nuove props, create in questo componente ma usufruibili nell'import  
                 sender = {sendData}
                 data={data}
-                {...other}/> //queste sono le props che aveva gia il componente 
+                {...props}/> //queste sono le props che aveva gia il componente 
     }
 }

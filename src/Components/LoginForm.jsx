@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import { WithFormRegistration } from "./Hoc components/WithFormRegistration"
 import { WithFormLogin } from "./Hoc components/WithFormLogin"
 import { WithForm } from "./Hoc components/WithForm"
-
+import { WithValidation } from "./Hoc components/WithValidation"
 const baseForm={
   email:'',
   password:''
@@ -50,6 +50,6 @@ function Form({data, handlerInput, sender}){
     )
 }
 
-const HocedLoginForm = WithForm(WithFormLogin(Form,baseForm),baseForm)
-const HocedRegistrationForm = WithForm(WithFormRegistration(Form,baseForm),baseForm)
+const HocedLoginForm = WithForm(WithValidation(WithFormLogin(Form)),baseForm)
+const HocedRegistrationForm = WithForm(WithFormRegistration(Form),baseForm)
 export { HocedLoginForm, HocedRegistrationForm}
