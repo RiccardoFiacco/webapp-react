@@ -13,7 +13,7 @@ export function WithFormRegistration (Component){
         // eslint-disable-next-line react-hooks/rules-of-hooks
         let navigate = useNavigate();
         const {data, resetForm, validation, ...other} = props
-        const {setLogged} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
+        const {setLogged, setUserName, setUserEmail} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
         const result = validation()
 
            
@@ -28,10 +28,12 @@ export function WithFormRegistration (Component){
             }
             try{
                 const result = await axios.post(loginUrl+'/registration', data)//chiamata alla rotta a cui passo i dati
-                const {loggato, code} = result.data //destructuring della risposta 
+                const {loggato, code, userEmail} = result.data //destructuring della risposta 
                 if(loggato){
                  console.log('utente trovato')
-                 setLogged(code) //setto la variabile reattiva con il valore ricevuto dal be
+                 setLogged(true) //setto la variabile reattiva a true
+                 setUserName(code)
+                 setUserEmail(userEmail)
                  resetForm(); //resetto i campi a vuoto
                  navigate("/") //torno alla home
                 }else{
