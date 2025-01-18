@@ -5,7 +5,7 @@ import { GlobalContext } from "../Utils/GlobalContext";
 
 export function Form({filmUrl}) {
 
-  const {setLoading, setMovie, search, userName, userEmail} = useContext(GlobalContext)
+  const {setLoading, setMovie, search, userName, userEmail, setSeeToast, setToastMsg} = useContext(GlobalContext)
 
   function fetch(){
     setLoading(true)
@@ -66,7 +66,8 @@ export function Form({filmUrl}) {
     
     try{
     const result = await axios.post('http://localhost:3000/api/reviews', review)
-    alert(result.data)
+    setSeeToast(true)
+    setToastMsg(result.data)
     fetch()
     setReview(baseForm)
     }catch(err){

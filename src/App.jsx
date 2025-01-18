@@ -19,7 +19,8 @@ function App() {
  const [logged, setLogged] = useState(false) //variabile reattiva per gestire l'accesso o meno dell'utente
  const [userName, setUserName] =useState('') //variabile reattiva per gestire il nome dell'utente
  const [userEmail, setUserEmail] =useState('') //variabile reattiva per gestire l'email dell'utente
-
+ const [seeToast, setSeeToast] = useState(false) 
+ const [toastMsg, setToastMsg] = useState('') 
   useEffect(()=>{ 
     setLoading(true) //imposto la variabile di caricamento a true
     axios.get(baseUrl,search?{
@@ -47,7 +48,9 @@ function App() {
       loading, setLoading,
       logged, setLogged,
       userName, setUserName,
-      userEmail, setUserEmail
+      userEmail, setUserEmail,
+      seeToast, setSeeToast,
+      toastMsg, setToastMsg
     }}>
      <BrowserRouter>
       <Routes>

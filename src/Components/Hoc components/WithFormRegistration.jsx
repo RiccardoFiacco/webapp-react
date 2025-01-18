@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
+
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { loginUrl } from '../../Utils/Utils';
@@ -10,10 +11,10 @@ export function WithFormRegistration (Component){
     
     return (props)=>{
 
-        // eslint-disable-next-line react-hooks/rules-of-hooks
+        
         let navigate = useNavigate();
         const {data, resetForm, validation, ...other} = props
-        const {setLogged, setUserName, setUserEmail} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
+        const {setLogged, setUserName, setUserEmail, setSeeToast, setToastMsg} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
         const result = validation()
 
            
@@ -30,10 +31,11 @@ export function WithFormRegistration (Component){
                 const result = await axios.post(loginUrl+'/registration', data)//chiamata alla rotta a cui passo i dati
                 const {loggato, code, userEmail} = result.data //destructuring della risposta 
                 if(loggato){
-                 console.log('utente trovato')
                  setLogged(true) //setto la variabile reattiva a true
-                 setUserName(code)
-                 setUserEmail(userEmail)
+                 setUserName(code) //importi l'user name
+                 setUserEmail(userEmail)//imposti l'email che invierai per la chiave esterna nel db
+                 setSeeToast(true) //imposti a true la variabile di stato che ti fa vedere il toast
+                 setToastMsg('Registrato con successo!') //imposti il messaggio del tost
                  resetForm(); //resetto i campi a vuoto
                  navigate("/") //torno alla home
                 }else{

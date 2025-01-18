@@ -11,7 +11,7 @@ export function WithFormLogin(Component){
         
         const {data, resetForm, validation, ...other} = props
         
-        const {setLogged, setUserName, setUserEmail} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
+        const {setLogged, setUserName, setUserEmail, setSeeToast, setToastMsg} = useContext(GlobalContext) //importo setLogged per impostare la variabile 
         let navigate = useNavigate(); //uso l'hook per creare la variabile per far tornare alla home 
         
         async function sendData(event){
@@ -29,10 +29,11 @@ export function WithFormLogin(Component){
                 const result = await axios.post(loginUrl+'/login', data) //chiamata alla rotta a cui passo i dati
                 const {loggato, code,userEmail} = result.data //destructuring della risposta
                 if(loggato){
-                 console.log('utente trovato')
                  setLogged(true) //setto la variabile reattiva con il valore ricevuto dal be
                  setUserName(code) //setto la variabile reattiva con il valore ricevuto dal be
                  setUserEmail(userEmail) //setto la variabile reattiva con il valore ricevuto dal be 
+                 setSeeToast(true) //imposti a true la variabile di stato che ti fa vedere il toast
+                 setToastMsg('Loggato con successo!') //imposti il messaggio del tost
                  resetForm(); //resetto i campi a vuoto
                  navigate("/") //torno alla home
                 }else{
