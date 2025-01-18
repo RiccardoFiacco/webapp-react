@@ -16,7 +16,9 @@ function App() {
  const [movies, setMovies] = useState([]) // variabile reattiva per gestire i film nella pagina principale
  const [movie, setMovie] = useState([]) //variabile reattiva per gestire il film nella pagina di dettaglio
  const [loading, setLoading] = useState(true)//variabile reattiva per gestire la schermata di caricamento
- const [logged, setLogged] = useState('') //variabile reattiva per gestire l'accesso o meno dell'utente
+ const [logged, setLogged] = useState(false) //variabile reattiva per gestire l'accesso o meno dell'utente
+ const [userName, setUserName] =useState('') //variabile reattiva per gestire il nome dell'utente
+ const [userEmail, setUserEmail] =useState('') //variabile reattiva per gestire l'email dell'utente
 
   useEffect(()=>{ 
     setLoading(true) //imposto la variabile di caricamento a true
@@ -43,7 +45,9 @@ function App() {
       movies, setMovies,
       movie, setMovie,
       loading, setLoading,
-      logged, setLogged
+      logged, setLogged,
+      userName, setUserName,
+      userEmail, setUserEmail
     }}>
      <BrowserRouter>
       <Routes>
