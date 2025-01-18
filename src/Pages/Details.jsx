@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Form } from "../Components/ReviewsForm"; //PERCHE DA PROBLEMI ADDFORM?
@@ -41,7 +42,7 @@ export function Details() {
       <section>
         {reviews && <Reviews reviews={reviews} filmUrl={url} />}
       </section>
-      {logged != ''?<Form filmUrl={url}/>:null}
+      {logged?<Form filmUrl={url}/>:null}
     </div>
   );
 }
