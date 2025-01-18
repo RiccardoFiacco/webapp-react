@@ -38,7 +38,7 @@ export function Reviews({reviews, filmUrl}){
                 <p>voto: {vote}</p>
                 <div className="flex justify-between items-center">
                     <span className=" text-gray-500 text-lg font-bold italic ">by {name}</span>
-                    {logged !== '' ? <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600" onClick={()=>deleteReview(id)}>elimina</button>: null} 
+                    {logged ? <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600" onClick={()=>deleteReview(id)}>elimina</button>: null} 
                 </div>
            </div>
         )
