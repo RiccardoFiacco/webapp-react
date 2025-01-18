@@ -2,11 +2,10 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalContext } from "../Utils/GlobalContext";
-import { baseUrl } from "../Utils/Utils";
 
 export function Form({filmUrl}) {
 
-  const {setLoading, setMovies, search} = useContext(GlobalContext)
+  const {setLoading, setMovie, search, userName, userEmail} = useContext(GlobalContext)
 
   function fetch(){
     setLoading(true)
@@ -16,7 +15,7 @@ export function Form({filmUrl}) {
       }
     })
       .then(response => {
-        setMovies(response.data)
+        setMovie(response.data)
       })
       .catch(err => {
         console.error(err)
@@ -29,9 +28,10 @@ export function Form({filmUrl}) {
   const { id } = useParams();
   const baseForm = {
     movie_id: id,
-    name: "",
+    name: userName,
     vote: 0,
     text: "",
+    user_email: userEmail
   };
 
   const [review, setReview] = useState(baseForm);
@@ -99,14 +99,14 @@ export function Form({filmUrl}) {
               min="0"
               max="5"
             />
-            <input
+            {/* <input
               name="name"
               onChange={(e) => changeHandler(e)}
               type="text"
               className="border-2 mx-5"
               value={review.name}
               placeholder="nome"
-            />
+            /> */}
           </div>
           <button className="bg-cyan-300 rounded-md px-2 h-10 hover:bg-cyan-600">invia</button>
         </div>
