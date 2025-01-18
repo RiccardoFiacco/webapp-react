@@ -8,7 +8,7 @@ export function WithButton(Component){
     return (props)=>{
          const { setLogged } = useContext(GlobalContext)
         function exit(){
-           setLogged('') 
+           setLogged(false) 
         }
 
          return <Component setter={exit} {...props}/>
