@@ -19,7 +19,7 @@ function Form({data, handlerInput, sender}){
         <form className="rounded-lg border-2 border-gray-950" onSubmit={(e)=>sender(e)}>
           <div className="px-3 text-lg font-medium border-b-2 border-b-gray-950 bg-slate-300 flex justify-between items-center">
             {location.pathname =='/user' ? <div>login</div>:<div>Registration</div>}
-            {location.pathname =='/user' ?<Link to='/registration' className="underline">se non sei registrato</Link>:null}
+            {location.pathname =='/user' ?<Link to='/registration' className="underline">se non sei registrato</Link>:<Link to='/user' className="underline">se sei gia registrato</Link>}
           </div>
           <div className="px-8 py-5">
             <div className="flex flex-row justify-between items-center">
