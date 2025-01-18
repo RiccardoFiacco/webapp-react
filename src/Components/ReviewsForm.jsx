@@ -75,11 +75,10 @@ export function Form({filmUrl}) {
   }
 
   return (
-    <form className="rounded-lg border-2 border-gray-950" onSubmit={(e)=>add(e)}>
-      {/* { JSON.stringify(review) } */}
-      <div className="px-3 text-lg font-medium border-b-2 border-b-gray-950 bg-slate-300 ">
+      <form className="rounded-lg border-2 border-gray-950" onSubmit={(e)=>add(e)}>
+       <div className="px-3 text-lg font-medium border-b-2 border-b-gray-950 bg-slate-300 ">
         inserisci la tua recensione
-      </div>
+      </div> 
       <div className="px-8 py-5">
         <textarea
           name="text"

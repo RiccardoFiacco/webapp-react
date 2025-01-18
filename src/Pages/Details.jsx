@@ -8,7 +8,7 @@ import { Reviews } from "../Components/Reviews";
 import axios from "axios";
 export function Details() {
   const { id } = useParams();
-  const { movie, setMovie, setLoading} = useContext(GlobalContext);
+  const { movie, setMovie, setLoading, logged} = useContext(GlobalContext);
   const { reviews, avg_vote } = movie;
 
   let star = getStar(avg_vote);
@@ -41,7 +41,7 @@ export function Details() {
       <section>
         {reviews && <Reviews reviews={reviews} filmUrl={url} />}
       </section>
-      <Form filmUrl={url} />
+      {logged != ''?<Form filmUrl={url}/>:null}
     </div>
   );
 }
