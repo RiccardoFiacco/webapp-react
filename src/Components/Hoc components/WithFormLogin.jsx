@@ -21,27 +21,29 @@ export function WithFormLogin(Component){
             data.password = data.password.trim()
             const result = validation()
             if(result.valid){
-                console.log(result.msg)
+             try{
+                 const result = await axios.post(loginUrl+'/login', data) //chiamata alla rotta a cui passo i dati
+                 const {loggato, code,userEmail} = result.data //destructuring della risposta
+                 if(loggato){
+                  setLogged(true) //setto la variabile reattiva con il valore ricevuto dal be
+                  setUserName(code) //setto la variabile reattiva con il valore ricevuto dal be
+                  setUserEmail(userEmail) //setto la variabile reattiva con il valore ricevuto dal be 
+                  setSeeToast(true) //imposti a true la variabile di stato che ti fa vedere il toast
+                  setToastMsg('Loggato con successo!') //imposti il messaggio del tost
+                  resetForm(); //resetto i campi a vuoto
+                  navigate("/") //torno alla home
+                 }else{
+                     setSeeToast(true)
+                     setToastMsg('utente non trovato')
+                 }
+                 
+             }catch(err){
+                 setSeeToast(true)
+                 setToastMsg(err)
+             }
             }else{
-                console.log(result.msg)
-            }
-            try{
-                const result = await axios.post(loginUrl+'/login', data) //chiamata alla rotta a cui passo i dati
-                const {loggato, code,userEmail} = result.data //destructuring della risposta
-                if(loggato){
-                 setLogged(true) //setto la variabile reattiva con il valore ricevuto dal be
-                 setUserName(code) //setto la variabile reattiva con il valore ricevuto dal be
-                 setUserEmail(userEmail) //setto la variabile reattiva con il valore ricevuto dal be 
-                 setSeeToast(true) //imposti a true la variabile di stato che ti fa vedere il toast
-                 setToastMsg('Loggato con successo!') //imposti il messaggio del tost
-                 resetForm(); //resetto i campi a vuoto
-                 navigate("/") //torno alla home
-                }else{
-                    console.log('utente non trovato')
-                }
-                
-            }catch(err){
-                console.log(err)
+                setSeeToast(true)
+                setToastMsg(result.msg) 
             }
         }
         
