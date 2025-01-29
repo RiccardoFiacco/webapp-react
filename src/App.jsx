@@ -21,6 +21,7 @@ function App() {
  const [userEmail, setUserEmail] =useState('') //variabile reattiva per gestire l'email dell'utente
  const [seeToast, setSeeToast] = useState(false) 
  const [toastMsg, setToastMsg] = useState('') 
+
   useEffect(()=>{ 
     setLoading(true) //imposto la variabile di caricamento a true
     axios.get(baseUrl,search?{
@@ -37,7 +38,6 @@ function App() {
       .finally(() => {
         setLoading(false)
       })
-    console.log(search)
   },[baseUrl, search])
 
   return (
