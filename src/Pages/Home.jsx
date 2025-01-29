@@ -3,9 +3,9 @@ import { GlobalContext } from '../Utils/GlobalContext'
 import { useContext } from "react"
 export function Home(){
     const { search, setSearch } = useContext(GlobalContext)
-
+    
     function changeHandler(e){
-        setSearch(e.target.value)
+        setSearch(e.target.value)  
     }
 
     return(
