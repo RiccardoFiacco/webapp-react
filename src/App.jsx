@@ -52,7 +52,7 @@ function App() {
       seeToast, setSeeToast,
       toastMsg, setToastMsg
     }}>
-     <BrowserRouter>
+     <BrowserRouter basename='/webapp-react'>
       <Routes>
        <Route Component={DefaultLayout}>
         <Route index Component={Home}/>
