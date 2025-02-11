@@ -2,8 +2,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { faStar as starRegular } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-// export const baseUrl = 'http://localhost:3000/api/movies';
-export const baseUrl = 'https://riccardofiacco.github.io/webapp-react/api/movies';
+export const baseUrl = 'http://localhost:3000/api/movies';
 export const sendUrl = 'http://localhost:3000/api/reviews';
 export const imgUrl = 'http://localhost:3000/photo/';
 export const loginUrl = 'http://localhost:3000/api/users';
